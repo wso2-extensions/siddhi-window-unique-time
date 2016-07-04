@@ -62,7 +62,6 @@ public class UniqueTimeWindowProcessor extends WindowProcessor implements Schedu
     private volatile long lastTimestamp = Long.MIN_VALUE;
     private VariableExpressionExecutor[] variableExpressionExecutors;
 
-
     /**
      * The setScheduler method of the TimeWindowProcessor, As scheduler is private variable, to access publicly we
      * use this setter method.
@@ -189,7 +188,6 @@ public class UniqueTimeWindowProcessor extends WindowProcessor implements Schedu
     public synchronized StreamEvent find(ComplexEvent matchingEvent, Finder finder) {
         return finder.find(matchingEvent, expiredEventChunk, streamEventCloner);
     }
-
 
     /**
      * To construct a finder having the capability of finding events at the processor that corresponds to the incoming
