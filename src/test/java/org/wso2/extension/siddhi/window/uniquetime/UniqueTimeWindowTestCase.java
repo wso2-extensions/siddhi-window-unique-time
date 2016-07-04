@@ -49,13 +49,10 @@ public class UniqueTimeWindowTestCase {
     public void uniqueTimeWindowTest1() throws InterruptedException {
 
         SiddhiManager siddhiManager = new SiddhiManager();
-
         String cseEventStream = "define stream cseEventStream (symbol string, price float, volume int);";
         String query = "@info(name = 'query1') from cseEventStream#window.unique:time(symbol, 2 sec) select symbol,price," +
                 "volume insert all events into outputStream ;";
-
         ExecutionPlanRuntime executionPlanRuntime = siddhiManager.createExecutionPlanRuntime(cseEventStream + query);
-
         executionPlanRuntime.addCallback("query1", new QueryCallback() {
             @Override
             public void receive(long timeStamp, Event[] inEvents, Event[] removeEvents) {
@@ -67,7 +64,6 @@ public class UniqueTimeWindowTestCase {
             }
 
         });
-
         InputHandler inputHandler = executionPlanRuntime.getInputHandler("cseEventStream");
         executionPlanRuntime.start();
         inputHandler.send(new Object[]{"IBM", 700f, 1});
@@ -82,13 +78,10 @@ public class UniqueTimeWindowTestCase {
     public void uniqueTimeWindowTest2() throws InterruptedException {
 
         SiddhiManager siddhiManager = new SiddhiManager();
-
         String cseEventStream = "define stream cseEventStream (symbol string, price float, volume int);";
         String query = "@info(name = 'query1') from cseEventStream#window.unique:time(symbol, 1 sec) select symbol,price," +
                 "volume insert all events into outputStream ;";
-
         ExecutionPlanRuntime executionPlanRuntime = siddhiManager.createExecutionPlanRuntime(cseEventStream + query);
-
         executionPlanRuntime.addCallback("query1", new QueryCallback() {
             @Override
             public void receive(long timeStamp, Event[] inEvents, Event[] removeEvents) {
@@ -100,7 +93,6 @@ public class UniqueTimeWindowTestCase {
             }
 
         });
-
         InputHandler inputHandler = executionPlanRuntime.getInputHandler("cseEventStream");
         executionPlanRuntime.start();
         inputHandler.send(new Object[]{"IBM", 700f, 1});
@@ -122,13 +114,10 @@ public class UniqueTimeWindowTestCase {
     public void uniqueTimeWindowTest3() throws InterruptedException {
 
         SiddhiManager siddhiManager = new SiddhiManager();
-
         String cseEventStream = "define stream cseEventStream (symbol string, price float, volume int);";
         String query = "@info(name = 'query1') from cseEventStream#window.unique:time(symbol, 1 sec) select symbol,price," +
                 "volume insert current events into outputStream ;";
-
         ExecutionPlanRuntime executionPlanRuntime = siddhiManager.createExecutionPlanRuntime(cseEventStream + query);
-
         executionPlanRuntime.addCallback("query1", new QueryCallback() {
             @Override
             public void receive(long timeStamp, Event[] inEvents, Event[] removeEvents) {
@@ -140,7 +129,6 @@ public class UniqueTimeWindowTestCase {
             }
 
         });
-
         InputHandler inputHandler = executionPlanRuntime.getInputHandler("cseEventStream");
         executionPlanRuntime.start();
         inputHandler.send(new Object[]{"IBM", 700f, 1});
@@ -163,9 +151,7 @@ public class UniqueTimeWindowTestCase {
         String cseEventStream = "define stream cseEventStream (symbol string, price float, volume int);";
         String query = "@info(name = 'query1') from cseEventStream#window.unique:time(volume, 1 sec) select symbol,price," +
                 "volume insert expired events into outputStream ;";
-
         ExecutionPlanRuntime executionPlanRuntime = siddhiManager.createExecutionPlanRuntime(cseEventStream + query);
-
         executionPlanRuntime.addCallback("query1", new QueryCallback() {
             @Override
             public void receive(long timeStamp, Event[] inEvents, Event[] removeEvents) {
@@ -177,7 +163,6 @@ public class UniqueTimeWindowTestCase {
             }
 
         });
-
         InputHandler inputHandler = executionPlanRuntime.getInputHandler("cseEventStream");
         executionPlanRuntime.start();
         inputHandler.send(new Object[]{"IBM", 700f, 1});
