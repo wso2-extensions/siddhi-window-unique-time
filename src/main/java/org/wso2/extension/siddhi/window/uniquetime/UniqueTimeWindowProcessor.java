@@ -171,7 +171,6 @@ public class UniqueTimeWindowProcessor extends WindowProcessor implements Schedu
                     streamEventChunk.remove();
                 }
             }
-
         }
         nextProcessor.process(streamEventChunk);
     }
