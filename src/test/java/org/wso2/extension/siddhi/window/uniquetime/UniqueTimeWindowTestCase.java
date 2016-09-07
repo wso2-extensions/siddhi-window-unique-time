@@ -180,4 +180,33 @@ public class UniqueTimeWindowTestCase {
         executionPlanRuntime.shutdown();
     }
 
+    @Test
+    public void uniqueTimeWindowTest5() throws InterruptedException {
+
+        SiddhiManager siddhiManager = new SiddhiManager();
+        String cseEventStream = "define stream cseEventStream (symbol string, price float, volume int);";
+        String query = "@info(name = 'query1') from cseEventStream#window.unique:time(symbol, 1 sec) select symbol,price," +
+                "volume insert into outputStream ;";
+        ExecutionPlanRuntime executionPlanRuntime = siddhiManager.createExecutionPlanRuntime(cseEventStream + query);
+        executionPlanRuntime.addCallback("query1", new QueryCallback() {
+            @Override
+            public void receive(long timeStamp, Event[] inEvents, Event[] removeEvents) {
+                EventPrinter.print(timeStamp, inEvents, removeEvents);
+                if (inEvents != null) {
+                    inEventCount = inEventCount + inEvents.length;
+                }
+                eventArrived = true;
+            }
+
+        });
+        InputHandler inputHandler = executionPlanRuntime.getInputHandler("cseEventStream");
+        executionPlanRuntime.start();
+        inputHandler.send(new Object[]{"IBM", 700f, 1});
+        inputHandler.send(new Object[]{"IBM", 700f, 1});
+        inputHandler.send(new Object[]{"IBM", 700f, 1});
+        Thread.sleep(1100);
+        Assert.assertEquals(3, inEventCount);
+        Assert.assertTrue(eventArrived);
+        executionPlanRuntime.shutdown();
+    }
 }

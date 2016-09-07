@@ -153,7 +153,7 @@ public class UniqueTimeWindowProcessor extends WindowProcessor implements Schedu
                                 this.expiredEventChunk.remove();
                                 streamEventChunk.insertBeforeCurrent(oldEvent);
                                 oldEvent.setTimestamp(currentTime);
-                                expiredEventChunk.reset();
+                                oldEvent=null;
                             }
                         } else {
                             expiredEventChunk.remove();
