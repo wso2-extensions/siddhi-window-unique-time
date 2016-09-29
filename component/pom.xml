@@ -24,11 +24,11 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.wso2.extension.siddhi.window.uniquelength</artifactId>
+    <artifactId>org.wso2.extension.siddhi.window.uniquetime</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <packaging>bundle</packaging>
-    <name>WSO2 Siddhi - Window Library For Unique Length</name>
+    <name>WSO2 Siddhi - Window Library For Unique Time</name>
     <url>http://wso2.org</url>
     <dependencies>
         <dependency>
@@ -66,11 +66,11 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-SymbolicName>org.wso2.extension.siddhi.window.uniquelength</Bundle-SymbolicName>
-                        <Bundle-Name>org.wso2.extension.siddhi.window.uniquelength</Bundle-Name>
+                        <Bundle-SymbolicName>org.wso2.extension.siddhi.window.uniquetime</Bundle-SymbolicName>
+                        <Bundle-Name>org.wso2.extension.siddhi.window.uniquetime</Bundle-Name>
                         <Export-Package>
-                            org.wso2.extension.siddhi.window.uniquelength,
-                            org.wso2.extension.siddhi.window.uniquelength.*
+                            org.wso2.extension.siddhi.window.uniquetime,
+                            org.wso2.extension.siddhi.window.uniquetime.*
                         </Export-Package>
                         <Import-Package>
                             *;resolution:=optional
