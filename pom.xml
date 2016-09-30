@@ -42,29 +42,6 @@
             </modules>
         </profile>
     </profiles>
-    <dependencies>
-        <dependency>
-            <groupId>org.wso2.siddhi</groupId>
-            <artifactId>siddhi-core</artifactId>
-            <version>${version.org.wso2.siddhi}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.siddhi</groupId>
-            <artifactId>siddhi-query-api</artifactId>
-            <version>${version.org.wso2.siddhi}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.log4j.wso2</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${version.org.apache.log4j.wso2}</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${version.junit}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
     <properties>
         <version.org.wso2.siddhi>3.1.0-alpha</version.org.wso2.siddhi>
         <version.org.apache.log4j.wso2>1.2.17.wso2v1</version.org.apache.log4j.wso2>
@@ -75,7 +52,7 @@
         <url>https://github.com/wso2-extensions/siddhi-window-unique-time.git</url>
         <developerConnection>scm:git:https://github.com/wso2-extensions/siddhi-window-unique-time.git
         </developerConnection>
-        <tag>org.wso2.extension.siddhi.window.uniquetime-1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
     <build>
         <extensions>
