@@ -94,7 +94,7 @@ public class UniqueTimeWindowProcessor extends WindowProcessor implements Schedu
         this.expiredEventChunk = new ComplexEventChunk<StreamEvent>(false);
         variableExpressionExecutors = new VariableExpressionExecutor[attributeExpressionExecutors.length - 1];
         if (attributeExpressionExecutors.length == 2) {
-                variableExpressionExecutors[0] = (VariableExpressionExecutor) attributeExpressionExecutors[0];
+            variableExpressionExecutors[0] = (VariableExpressionExecutor) attributeExpressionExecutors[0];
             if (attributeExpressionExecutors[1] instanceof ConstantExpressionExecutor) {
                 if (attributeExpressionExecutors[1].getReturnType() == Attribute.Type.INT) {
                     timeInMilliSeconds = (Integer) ((ConstantExpressionExecutor) attributeExpressionExecutors[1]).getValue();
@@ -153,7 +153,7 @@ public class UniqueTimeWindowProcessor extends WindowProcessor implements Schedu
                                 this.expiredEventChunk.remove();
                                 streamEventChunk.insertBeforeCurrent(oldEvent);
                                 oldEvent.setTimestamp(currentTime);
-                                oldEvent=null;
+                                oldEvent = null;
                             }
                         } else {
                             expiredEventChunk.remove();
@@ -193,13 +193,12 @@ public class UniqueTimeWindowProcessor extends WindowProcessor implements Schedu
      * matchingEvent and the given matching expression logic.
      *
      * @param expression                  the matching expression
-     * @param matchingMetaComplexEvent     the meta structure of the incoming matchingEvent
+     * @param matchingMetaComplexEvent    the meta structure of the incoming matchingEvent
      * @param executionPlanContext        current execution plan context
      * @param variableExpressionExecutors the list of variable ExpressionExecutors already created
      * @param eventTableMap               map of event tables
      * @param matchingStreamIndex         the stream index of the incoming matchingEvent
      * @param withinTime                  the maximum time gap between the events to be matched
-     *
      * @return finder having the capability of finding events at the processor against the expression and incoming
      * matchingEvent
      */
@@ -240,7 +239,7 @@ public class UniqueTimeWindowProcessor extends WindowProcessor implements Schedu
      */
     @Override
     public Object[] currentState() {
-        return new Object[]{expiredEventChunk.getFirst(),map};
+        return new Object[]{expiredEventChunk.getFirst(), map};
     }
 
     /**
@@ -254,7 +253,7 @@ public class UniqueTimeWindowProcessor extends WindowProcessor implements Schedu
     public void restoreState(Object[] state) {
         expiredEventChunk.clear();
         expiredEventChunk.add((StreamEvent) state[0]);
-        map=(ConcurrentHashMap)state[1];
+        map = (ConcurrentHashMap) state[1];
     }
 
     /**
