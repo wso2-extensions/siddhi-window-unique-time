@@ -42,7 +42,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/*
+/**
 * Sample Query:
 * from inputStream#window.unique:time(attribute1,3 sec)
 * select attribute1, attribute2
@@ -51,6 +51,7 @@ import java.util.concurrent.ConcurrentHashMap;
 * Description:
 * In the example query given, 3 is the duration of the window and attribute1 is the unique attribute.
 * According to the given attribute it will give unique events within given time.
+* @since 1.0.1
 * */
 public class UniqueTimeWindowProcessor extends WindowProcessor implements SchedulingProcessor, FindableProcessor {
 
@@ -98,7 +99,6 @@ public class UniqueTimeWindowProcessor extends WindowProcessor implements Schedu
             if (attributeExpressionExecutors[1] instanceof ConstantExpressionExecutor) {
                 if (attributeExpressionExecutors[1].getReturnType() == Attribute.Type.INT) {
                     timeInMilliSeconds = (Integer) ((ConstantExpressionExecutor) attributeExpressionExecutors[1]).getValue();
-
                 } else if (attributeExpressionExecutors[1].getReturnType() == Attribute.Type.LONG) {
                     timeInMilliSeconds = (Long) ((ConstantExpressionExecutor) attributeExpressionExecutors[1]).getValue();
                 } else {

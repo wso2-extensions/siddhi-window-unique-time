@@ -69,7 +69,7 @@
                         <Bundle-Name>org.wso2.extension.siddhi.window.uniquetime</Bundle-Name>
                         <Export-Package>
                             org.wso2.extension.siddhi.window.uniquetime,
-                            org.wso2.extension.siddhi.window.uniquetime.*
+                            org.wso2.extension.siddhi.window.uniquetime.*; version="${project.version}",
                         </Export-Package>
                         <Import-Package>
                             *;resolution:=optional
